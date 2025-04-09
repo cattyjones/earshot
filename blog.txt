@@ -20,11 +20,11 @@ Demos/Builds: Apps built with our full-stack. Aim for 1 per week, with monthly c
 
 Customer Milestones: Highlight customer successes and case studies.   
 
-Do Less Of:
+Do Less Of:  
 
 Chain Announcements: Only cover top, Tier 1 chains.   
 
-Event Announcements: Usually only relevant to attendees. Email them instead.
+Event Announcements: Usually only relevant to attendees. Email them instead.  
 
 An example of a highly sharable format: Shorts that combine "how to build this app" + an inspiring user story + highlighting our product's role via case studies. For example, a mini-game that went viral with 250K players without needing an app store, showing how our tools enabled seamless onboarding and gasless transactions.  
 
