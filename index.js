@@ -67,6 +67,7 @@ ${threadText}
     // Upload the blog as a .txt snippet using Slack's uploadV2
     await client.files.uploadV2({
       channel_id: event.channel,
+      thread_ts: event.thread_ts || event.ts,
       initial_comment: "📝 Blog post from Earshot (formatted as snippet)",
       file: filePath,
       filename: "earshot-blog.txt",
