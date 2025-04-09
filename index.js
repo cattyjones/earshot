@@ -64,14 +64,12 @@ ${threadText}
     const filePath = 'blog.txt';
     fs.writeFileSync(filePath, blogText);
 
-    // Upload the blog as a .txt snippet using Slack's uploadV2 (without thread_ts)
+    // Upload the blog as a .txt snippet using Slack's uploadV2
     await client.files.uploadV2({
       channel_id: event.channel,
       initial_comment: "📝 Blog post from Earshot (formatted as snippet)",
-      file: {
-        file: fs.createReadStream(filePath),
-        filename: "earshot-blog.txt",
-      },
+      file: filePath,
+      filename: "earshot-blog.txt",
     });
 
     // Follow-up reply in the original thread
@@ -94,6 +92,6 @@ receiver.app.get('/', (req, res) => {
 });
 
 // Start the app
-receiver.app.listen(3000, () => {
-  console.log('⚡️ Earshot is listening at http://localhost:3000');
+receiver.app.listen(3000, '0.0.0.0', () => {
+  console.log('⚡️ Earshot is listening at http://0.0.0.0:3000');
 });
