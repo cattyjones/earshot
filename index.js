@@ -77,7 +77,7 @@ ${threadText}
     await client.chat.postMessage({
       channel: event.channel,
       thread_ts: event.ts,
-      text: "🧵 Blog post uploaded above 👆",
+      text: "Blog post below",
     });
 
     console.log('📎 Blog snippet uploaded + thread reply sent');
