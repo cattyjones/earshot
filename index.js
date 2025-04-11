@@ -28,10 +28,16 @@ app.event("app_mention", async ({ event, client }) => {
 
     const threadText = result.messages.map((msg) => msg.text).join("\n");
 
-    // Extract the user's direction from the @mention
+    // Extract the user's prompt from the @mention
     const userPrompt = event.text.replace(/<@[^>]+>/, "").trim();
+    
+    // Use custom prompt if provided, otherwise use default
+    const promptText = userPrompt ? 
+      `Write a blog post based on the following discussion, with this additional context: ${userPrompt}` :
+      "Write a blog post based on the following discussion:";
+    
     const prompt = `
-${userPrompt || "Write a blog post based on the following discussion:"}
+${promptText}
 
 Here is the full Slack thread:
 ${threadText}
