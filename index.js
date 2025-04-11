@@ -43,7 +43,7 @@ ${threadText}
     const claudeRes = await axios.post(
       "https://api.anthropic.com/v1/messages",
       {
-        model: "claude-2.1",
+        model: "claude-3-opus-20240229",
         messages: [
           {
             role: "user",
