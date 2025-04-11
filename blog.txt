@@ -1,13 +1,57 @@
-Here is a draft blog post based on the Slack discussion:
+# Pioneering ERC-7702: Our Journey Towards Next-Gen Smart Wallet UX
 
-Quality Over Speed: Why Blockchain Reliability Matters More Than Raw Performance 
+The blockchain development space is constantly evolving, and at our company, we're committed to staying at the forefront of innovation. Recently, our team has been deeply engaged with implementing ERC-7702, a new Ethereum standard that promises to revolutionize smart wallet interactions. In this post, I want to share our progress, challenges, and the exciting future we envision for this technology.
 
-A recent debate on a blockchain development Slack channel highlighted an important discussion - is it more important for blockchain platforms to focus on faster transaction speeds or on ensuring reliable execution?
+## What is ERC-7702?
 
-The consensus from experienced developers was that consistency and reliability should be prioritized over raw speed. As one developer put it, "better output is more important than speed." People are willing to wait slightly longer for something of higher quality.  
+ERC-7702 is gaining momentum across various testnets, offering a potentially superior alternative to the current ERC-4337 account abstraction standard. While not yet widely discussed as a "4337 replacement," our team recognizes its potential to significantly improve wallet user experience with fewer complexities.
 
-When users interact with any system, whether setting up a merchant account or exchanging currency, what matters most is having confidence that things will work as expected. Users want assurance that transactions and notifications won't get lost and that there are mechanisms to remedy issues if they occur.  
+## Our Development Journey
 
-As another developer argued, "engine making sure execution is quasi-guaranteed is more important than making the tx get to that mined status faster." Fast blockchain speeds may seem impressive at first glance, but they don't earn long-term user trust. What builds trust is execution consistency over the long haul.
+Our implementation journey has been both challenging and enlightening. We initially planned to launch our 7702 solution alongside Engine Cloud, which would have provided a seamless experience for users. However, with the Engine Cloud component temporarily paused in favor of an enclave rewrite, we've had to reassess our approach.
 
-The key takeaway is that while raw performance benchmarks are easy marketing wins, what really matters is dependable real-world operation over years of production use. Fast and flashy loses its luster quickly if users encounter reliability issues down the line. As builders of mission-critical blockchain infrastructure, we should optimize for boringness - prioritizing stability and robustness over all else. The users and systems that depend on us will thank us in the long run.
+The current technical state is promising - we've already written the code that other providers like Pimlico are requiring developers to implement, abstracting away much of the complexity. However, one remaining hurdle is the executor wallet requirement. Without Engine Cloud, users currently need to explicitly pass an executor wallet - a slight downgrade in developer experience compared to current smart wallet implementations.
+
+## The Executor Wallet Challenge
+
+For those unfamiliar with the technical details, the executor wallet is a critical component in the 7702 flow. Our implementation supports EngineWallet and PrivateKeyWallet as executors, while InAppWallet and EcosystemWallet support is still being finalized in the enclave repository.
+
+The real magic of 7702-powered wallets emerges when paired with an executor that can pay for transactions and submit them onchain. This completely replaces the 4337 smart wallet flow with a more efficient solution - but getting there requires some additional infrastructure.
+
+## Options Moving Forward
+
+We're currently evaluating several approaches:
+
+1. **Explicit Executor Requirement**: Launch with the requirement that developers pass their own executor wallet
+2. **Simplified Implementation**: Roll out a version that supports gasless self-execution but without session key functionality
+3. **Internal Testing First**: Create a test loop for internal developers before considering an alpha/beta release
+
+We're particularly interested in exploring batch operations with EOA addresses, which wouldn't require an executor and could provide a valuable testing ground.
+
+## The Competitive Landscape
+
+We're not alone in exploring this space. Companies like Gelato appear to be developing 7702-powered relay products for rollup chains. This competitive pressure makes our work even more urgent, as we aim to provide a compelling, user-friendly implementation that stands out in the market.
+
+## Next Steps
+
+Our immediate roadmap includes:
+
+1. Updating our enclave to support InAppWallet
+2. Building a small demo application for internal testing
+3. Developing the client-side API specification
+4. Continuing work on Engine Cloud and server enclave wallets
+5. Building the execution fleet infrastructure
+
+We're working diligently to ensure our implementation provides the most seamless experience possible, eliminating the need for users to understand the underlying complexities.
+
+## Looking Forward
+
+Despite the challenges, we remain enthusiastic about the potential of ERC-7702. The standard promises significant improvements in transaction efficiency, user experience, and developer simplicity compared to existing solutions.
+
+Our goal is to create a solution that "just works" - where developers and end-users can benefit from the advanced capabilities without needing to understand the intricate technical details. We believe ERC-7702 represents the future of smart wallet interactions, and we're committed to building the best possible implementation.
+
+Stay tuned for updates as we continue to refine our approach and prepare for a wider release!
+
+---
+
+*What are your thoughts on ERC-7702? Are you working with this standard, or are you waiting for more widespread adoption? Let us know in the comments below.*
