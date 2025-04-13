@@ -1,7 +1,7 @@
 Earshot is a Slack bot that turns team discussions into blog posts using Claude.
 
-**Overview
-**
+**Overview**
+
 Earshot listens for mentions in Slack threads, captures the entire conversation, and uses Anthropic's Claude 3.7 Sonnet to generate a well-structured blog post based on the discussion. The blog post is then delivered back to the thread as a text file.
 Features
 
@@ -10,8 +10,8 @@ Contextual Understanding: Processes the entire conversation thread for coherent 
 Custom Prompting: Add specific instructions when tagging for tailored results
 Instant Delivery: Returns the blog post directly in the thread
 
-**How It Works
-**
+**How It Works**
+
 Tag @Earshot in any Slack thread
 Optionally include specific instructions with your tag
 Earshot captures the entire thread conversation
@@ -25,22 +25,21 @@ Node.js (v14+)
 Slack workspace with permission to add apps
 Anthropic API key
 
-**Setup
-**
+**Setup**
+
 Clone this repository:
 bashgit clone https://github.com/yourusername/earshot.git
 cd earshot
 
-**Install dependencies:
-**bashnpm install
+Install dependencies:bashnpm install
 
 Create a .env file with your credentials:
 SLACK_BOT_TOKEN=xoxb-your-bot-token
 SLACK_SIGNING_SECRET=your-signing-secret
 CLAUDE_API_KEY=your-anthropic-api-key
 
-**Set up your Slack app:
-**
+Set up your Slack app:
+
 Create a new Slack app at api.slack.com
 Add the app_mentions:read, channels:history, chat:write, and files:write scopes
 Enable Event Subscriptions and subscribe to the app_mention event
@@ -57,15 +56,13 @@ Update your Slack app's Event Subscriptions URL to your ngrok URL + /slack/event
 
 
 
-**Usage
-**Basic Usage
-Simply tag @Earshot in any thread:
-@Earshot
-With Custom Instructions
-Tag @Earshot with specific formatting or content instructions:
-@Earshot Please focus on the technical aspects and format with bullet points
+**Usage** 
+
+Basic Usage
+- Simply tag @Earshot in any thread or @Earshot with custom instructions
+- Focus on the technical aspects and format with bullet points
 Deployment
-For production, deploy to your preferred hosting platform:
+
 
 Heroku
 AWS
