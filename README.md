@@ -29,7 +29,7 @@ Anthropic API key
 **Setup**
 
 Clone this repository:
-bashgit clone https://github.com/yourusername/earshot.git
+bashgit clone https://github.com/cattyjones/earshot.git
 cd earshot
 
 Install dependencies:bashnpm install
