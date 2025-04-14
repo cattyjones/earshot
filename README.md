@@ -1,9 +1,10 @@
-Earshot is a Slack bot that turns team discussions into blog posts using Claude.
+Turns slack discussions into blog posts with AI.
 
 **Overview**
 
-Earshot listens for mentions in Slack threads, captures the entire conversation, and uses Anthropic's Claude 3.7 Sonnet to generate a well-structured blog post based on the discussion. The blog post is then delivered back to the thread as a text file.
-Features
+Earshot is a slack bot that listens for mentions in threads, captures the entire conversation, and uses Anthropic's Claude 3.7 Sonnet to generate a well-structured blog post based on the discussion. The blog post is then delivered back to the thread as a text file.
+
+**Features**
 
 Simple Integration: Tag @Earshot in any Slack thread
 Contextual Understanding: Processes the entire conversation thread for coherent output
