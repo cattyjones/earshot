@@ -1,71 +1,135 @@
-Turns slack discussions into blog posts with AI.
+# Earshot
 
-**Overview**
+Turn Slack conversations into blog posts with AI.
 
-Earshot is a slack bot that listens for mentions in threads, captures the entire conversation, and uses Anthropic's Claude 3.7 Sonnet to generate a well-structured blog post based on the discussion. The blog post is then delivered back to the thread as a text file.
+---
 
-**Features**
+## 🧠 Overview
 
-Simple Integration: Tag @Earshot in any Slack thread
-Contextual Understanding: Processes the entire conversation thread for coherent output
-Custom Prompting: Add specific instructions when tagging for tailored results
-Instant Delivery: Returns the blog post directly in the thread
+**Earshot** is a Slack bot that listens for mentions in threads, captures the full conversation, and uses **Claude 3.7 Sonnet** from Anthropic to generate a structured, high-quality blog post. The final output is delivered directly into the Slack thread as a formatted `.txt` file.
 
-**How It Works**
+---
 
-Tag @Earshot in any Slack thread
-Optionally include specific instructions with your tag
-Earshot captures the entire thread conversation
-The bot sends the conversation to Claude 3.7 Sonnet
-A formatted blog post is returned to the thread as a text file
+## ✨ Features
 
-**Installation
-Prerequisites**
+- **Simple Integration** – Just tag `@earshot` in any Slack thread  
+- **Contextual Understanding** – Captures the full conversation for deep context  
+- **Custom Prompting** – Add specific instructions with your tag to shape the output  
+- **Instant Delivery** – Blog posts are returned right inside the thread  
 
-Node.js (v14+)
-Slack workspace with permission to add apps
-Anthropic API key
+---
 
-**Setup**
+## ⚙️ How It Works
 
-Clone this repository:
-bashgit clone https://github.com/cattyjones/earshot.git
+1. Tag `@earshot` in any Slack thread  
+2. Optionally include custom instructions in your message  
+3. Earshot captures the full thread conversation  
+4. The bot sends it to **Claude 3.7 Sonnet** via the Anthropic API  
+5. A clean, formatted blog post is returned as a `.txt` file in the thread
+
+---
+
+## 🛠 Installation & Setup
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- Access to a Slack workspace (with permission to install apps)
+- Anthropic API key (Claude 3.7 access)
+
+### Setup
+
+```bash
+git clone https://github.com/cattyjones/earshot.git
 cd earshot
+npm install
+```
 
-Install dependencies:bashnpm install
+### Create a `.env` file
 
-Create a .env file with your credentials:
-SLACK_BOT_TOKEN=xoxb-your-bot-token
-SLACK_SIGNING_SECRET=your-signing-secret
+```env
+SLACK_BOT_TOKEN=xoxb-your-slack-token
+SLACK_SIGNING_SECRET=your-slack-signing-secret
 CLAUDE_API_KEY=your-anthropic-api-key
+```
 
-Set up your Slack app:
+### Set up your Slack app
 
-Create a new Slack app at api.slack.com
-Add the app_mentions:read, channels:history, chat:write, and files:write scopes
-Enable Event Subscriptions and subscribe to the app_mention event
-Install the app to your workspace
+1. Go to [https://api.slack.com/apps](https://api.slack.com/apps) and create a new app
+2. Enable the following **OAuth scopes**:
+   - `app_mentions:read`
+   - `channels:history`
+   - `chat:write`
+   - `files:write`
+3. Enable **Event Subscriptions**:
+   - Request URL: `https://your-server.com/slack/events`
+   - Subscribe to the `app_mention` event
+4. Install the app to your workspace
 
+### Start the server
 
-Start the server:
-bashnode index.js
+```bash
+node index.js
+```
 
-Expose your local server (for development):
+---
 
-Use a tool like ngrok: ngrok http 3000
-Update your Slack app's Event Subscriptions URL to your ngrok URL + /slack/events
+## 🚧 Local Development (with ngrok)
 
+If you are developing locally, use [ngrok](https://ngrok.com/) to expose your local server:
 
+```bash
+ngrok http 3000
+```
 
-**Usage** 
+Then, update your Slack Event Subscriptions URL to:
 
-Basic Usage
-- Simply tag @Earshot in any thread or @Earshot with custom instructions
-- Focus on the technical aspects and format with bullet points
-Deployment
+```
+https://<your-ngrok-subdomain>.ngrok.io/slack/events
+```
 
+---
 
-Heroku
+## 🚀 Deployment
+
+Earshot can be deployed on:
+
+- Heroku
+- AWS
+- Google Cloud
+- DigitalOcean
+- Replit (for quick testing)
+
+Update your Event Subscriptions URL to match your production server.
+
+---
+
+## 🔐 Environment Variables
+
+| Variable             | Description                     |
+|----------------------|---------------------------------|
+| `SLACK_BOT_TOKEN`    | Your Slack bot token (`xoxb-`)  |
+| `SLACK_SIGNING_SECRET` | Your Slack app signing secret |
+| `CLAUDE_API_KEY`     | Your Anthropic Claude API key   |
+
+---
+
+## 🧩 Customization
+
+To customize how Earshot prompts Claude, edit the prompt text inside the `app_mention` event handler in `index.js`. This lets you shape the tone, format, or structure of the blog output.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!  
+Feel free to fork the repo and submit a pull request.
+
+---
+
+## 📄 License
+
+MIT
 AWS
 Google Cloud
 Digital Ocean
